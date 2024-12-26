@@ -56,7 +56,7 @@ type ats struct {
 }
 
 // newAts returns a Ats
-func newAts(c *SamplecontrollerV1alpha1Client, namespace string) *ats {
+func newAts(c *CnatV1alpha1Client, namespace string) *ats {
 	return &ats{
 		gentype.NewClientWithList[*cnatv1alpha1.At, *cnatv1alpha1.AtList](
 			"ats",

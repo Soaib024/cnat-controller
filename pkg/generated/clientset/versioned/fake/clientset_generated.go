@@ -20,8 +20,8 @@ package fake
 
 import (
 	clientset "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned"
-	samplecontrollerv1alpha1 "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned/typed/cnat/v1alpha1"
-	fakesamplecontrollerv1alpha1 "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned/typed/cnat/v1alpha1/fake"
+	cnatv1alpha1 "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned/typed/cnat/v1alpha1"
+	fakecnatv1alpha1 "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned/typed/cnat/v1alpha1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"
@@ -83,7 +83,7 @@ var (
 	_ testing.FakeClient  = &Clientset{}
 )
 
-// SamplecontrollerV1alpha1 retrieves the SamplecontrollerV1alpha1Client
-func (c *Clientset) SamplecontrollerV1alpha1() samplecontrollerv1alpha1.SamplecontrollerV1alpha1Interface {
-	return &fakesamplecontrollerv1alpha1.FakeSamplecontrollerV1alpha1{Fake: &c.Fake}
+// CnatV1alpha1 retrieves the CnatV1alpha1Client
+func (c *Clientset) CnatV1alpha1() cnatv1alpha1.CnatV1alpha1Interface {
+	return &fakecnatv1alpha1.FakeCnatV1alpha1{Fake: &c.Fake}
 }

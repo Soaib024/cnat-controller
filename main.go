@@ -68,8 +68,9 @@ func main() {
 	exampleInformerFactory := informers.NewSharedInformerFactory(exampleClient, time.Second*30)
 
 	controller := NewController(ctx, kubeClient, exampleClient,
-		kubeInformerFactory.Apps().V1().Deployments(),
-		exampleInformerFactory.Samplecontroller().V1alpha1().Foos())
+		exampleInformerFactory.Cnat().V1alpha1().Ats(),
+		kubeInformerFactory.Core().V1().Pods(),
+	)
 
 	// notice that there is no need to run Start methods in a separate goroutine. (i.e. go kubeInformerFactory.Start(ctx.done())
 	// Start method is non-blocking and runs all registered informers in a dedicated goroutine.

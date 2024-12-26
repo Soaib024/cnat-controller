@@ -27,10 +27,10 @@ import (
 // fakeAts implements AtInterface
 type fakeAts struct {
 	*gentype.FakeClientWithList[*v1alpha1.At, *v1alpha1.AtList]
-	Fake *FakeSamplecontrollerV1alpha1
+	Fake *FakeCnatV1alpha1
 }
 
-func newFakeAts(fake *FakeSamplecontrollerV1alpha1, namespace string) cnatv1alpha1.AtInterface {
+func newFakeAts(fake *FakeCnatV1alpha1, namespace string) cnatv1alpha1.AtInterface {
 	return &fakeAts{
 		gentype.NewFakeClientWithList[*v1alpha1.At, *v1alpha1.AtList](
 			fake.Fake,

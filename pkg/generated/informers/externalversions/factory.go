@@ -254,9 +254,9 @@ type SharedInformerFactory interface {
 	// client.
 	InformerFor(obj runtime.Object, newFunc internalinterfaces.NewInformerFunc) cache.SharedIndexInformer
 
-	Samplecontroller() cnat.Interface
+	Cnat() cnat.Interface
 }
 
-func (f *sharedInformerFactory) Samplecontroller() cnat.Interface {
+func (f *sharedInformerFactory) Cnat() cnat.Interface {
 	return cnat.New(f, f.namespace, f.tweakListOptions)
 }

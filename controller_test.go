@@ -35,7 +35,7 @@ import (
 	"k8s.io/client-go/tools/record"
 	"k8s.io/klog/v2/ktesting"
 
-	"github.com/soaib024/cnat-controller/pkg/apis/v1alpha1"
+	"github.com/soaib024/cnat-controller/pkg/apis/cnat/v1alpha1"
 	"github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned/fake"
 	informers "github.com/soaib024/cnat-controller/pkg/generated/informers/externalversions"
 )
