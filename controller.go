@@ -42,7 +42,7 @@ import (
 	cnatv1alpha1 "github.com/soaib024/cnat-controller/pkg/apis/v1alpha1"
 	clientset "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned"
 	samplescheme "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned/scheme"
-	informers "github.com/soaib024/cnat-controller/pkg/generated/informers/externalversions//v1alpha1"
+	informers "github.com/soaib024/cnat-controller/pkg/generated/informers/externalversions/v1alpha1"
 	listers "github.com/soaib024/cnat-controller/pkg/generated/listers/v1alpha1"
 )
 
