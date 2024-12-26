@@ -22,69 +22,69 @@ import (
 	context "context"
 	time "time"
 
-	apissamplecontrollerv1alpha1 "github.com/soaib024/cnat-controller/pkg/apis/samplecontroller/v1alpha1"
+	apiscnatv1alpha1 "github.com/soaib024/cnat-controller/pkg/apis/cnat/v1alpha1"
 	versioned "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned"
 	internalinterfaces "github.com/soaib024/cnat-controller/pkg/generated/informers/externalversions/internalinterfaces"
-	samplecontrollerv1alpha1 "github.com/soaib024/cnat-controller/pkg/generated/listers/samplecontroller/v1alpha1"
+	cnatv1alpha1 "github.com/soaib024/cnat-controller/pkg/generated/listers/cnat/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"
 	cache "k8s.io/client-go/tools/cache"
 )
 
-// FooInformer provides access to a shared informer and lister for
-// Foos.
-type FooInformer interface {
+// AtInformer provides access to a shared informer and lister for
+// Ats.
+type AtInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() samplecontrollerv1alpha1.FooLister
+	Lister() cnatv1alpha1.AtLister
 }
 
-type fooInformer struct {
+type atInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 	namespace        string
 }
 
-// NewFooInformer constructs a new informer for Foo type.
+// NewAtInformer constructs a new informer for At type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFooInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredFooInformer(client, namespace, resyncPeriod, indexers, nil)
+func NewAtInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredAtInformer(client, namespace, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredFooInformer constructs a new informer for Foo type.
+// NewFilteredAtInformer constructs a new informer for At type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredFooInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredAtInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.SamplecontrollerV1alpha1().Foos(namespace).List(context.TODO(), options)
+				return client.SamplecontrollerV1alpha1().Ats(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.SamplecontrollerV1alpha1().Foos(namespace).Watch(context.TODO(), options)
+				return client.SamplecontrollerV1alpha1().Ats(namespace).Watch(context.TODO(), options)
 			},
 		},
-		&apissamplecontrollerv1alpha1.Foo{},
+		&apiscnatv1alpha1.At{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *fooInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredFooInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *atInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredAtInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *fooInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&apissamplecontrollerv1alpha1.Foo{}, f.defaultInformer)
+func (f *atInformer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&apiscnatv1alpha1.At{}, f.defaultInformer)
 }
 
-func (f *fooInformer) Lister() samplecontrollerv1alpha1.FooLister {
-	return samplecontrollerv1alpha1.NewFooLister(f.Informer().GetIndexer())
+func (f *atInformer) Lister() cnatv1alpha1.AtLister {
+	return cnatv1alpha1.NewAtLister(f.Informer().GetIndexer())
 }

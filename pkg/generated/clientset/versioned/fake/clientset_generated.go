@@ -20,8 +20,8 @@ package fake
 
 import (
 	clientset "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned"
-	samplecontrollerv1alpha1 "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned/typed/samplecontroller/v1alpha1"
-	fakesamplecontrollerv1alpha1 "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned/typed/samplecontroller/v1alpha1/fake"
+	samplecontrollerv1alpha1 "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned/typed/cnat/v1alpha1"
+	fakesamplecontrollerv1alpha1 "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned/typed/cnat/v1alpha1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"

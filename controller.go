@@ -39,11 +39,11 @@ import (
 	"k8s.io/client-go/util/workqueue"
 	"k8s.io/klog/v2"
 
-	cnatv1alpha1 "github.com/soaib024/cnat-controller/pkg/apis/samplecontroller/v1alpha1"
+	cnatv1alpha1 "github.com/soaib024/cnat-controller/pkg/apis/v1alpha1"
 	clientset "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned"
 	samplescheme "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned/scheme"
-	informers "github.com/soaib024/cnat-controller/pkg/generated/informers/externalversions/samplecontroller/v1alpha1"
-	listers "github.com/soaib024/cnat-controller/pkg/generated/listers/samplecontroller/v1alpha1"
+	informers "github.com/soaib024/cnat-controller/pkg/generated/informers/externalversions//v1alpha1"
+	listers "github.com/soaib024/cnat-controller/pkg/generated/listers/v1alpha1"
 )
 
 const controllerAgentName = "sample-controller"
@@ -321,7 +321,7 @@ func (c *Controller) updateFooStatus(ctx context.Context, foo *cnatv1alpha1.Foo,
 	// we must use Update instead of UpdateStatus to update the Status block of the Foo resource.
 	// UpdateStatus will not allow changes to the Spec of the resource,
 	// which is ideal for ensuring nothing other than resource status has been updated.
-	_, err := c.sampleclientset.SamplecontrollerV1alpha1().Foos(foo.Namespace).UpdateStatus(ctx, fooCopy, metav1.UpdateOptions{FieldManager: FieldManager})
+	_, err := c.sampleclientset.V1alpha1().Foos(foo.Namespace).UpdateStatus(ctx, fooCopy, metav1.UpdateOptions{FieldManager: FieldManager})
 	return err
 }
 

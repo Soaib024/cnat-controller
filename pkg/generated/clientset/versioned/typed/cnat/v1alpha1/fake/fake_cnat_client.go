@@ -19,7 +19,7 @@ limitations under the License.
 package fake
 
 import (
-	v1alpha1 "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned/typed/samplecontroller/v1alpha1"
+	v1alpha1 "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned/typed/cnat/v1alpha1"
 	rest "k8s.io/client-go/rest"
 	testing "k8s.io/client-go/testing"
 )
@@ -28,8 +28,8 @@ type FakeSamplecontrollerV1alpha1 struct {
 	*testing.Fake
 }
 
-func (c *FakeSamplecontrollerV1alpha1) Foos(namespace string) v1alpha1.FooInterface {
-	return newFakeFoos(c, namespace)
+func (c *FakeSamplecontrollerV1alpha1) Ats(namespace string) v1alpha1.AtInterface {
+	return newFakeAts(c, namespace)
 }
 
 // RESTClient returns a RESTClient that is used to communicate

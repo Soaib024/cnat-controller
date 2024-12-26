@@ -19,7 +19,7 @@ limitations under the License.
 package scheme
 
 import (
-	samplecontrollerv1alpha1 "github.com/soaib024/cnat-controller/pkg/apis/samplecontroller/v1alpha1"
+	samplecontrollerv1alpha1 "github.com/soaib024/cnat-controller/pkg/apis/cnat/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"

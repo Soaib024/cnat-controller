@@ -21,14 +21,14 @@ package v1alpha1
 import (
 	http "net/http"
 
-	samplecontrollerv1alpha1 "github.com/soaib024/cnat-controller/pkg/apis/samplecontroller/v1alpha1"
+	cnatv1alpha1 "github.com/soaib024/cnat-controller/pkg/apis/cnat/v1alpha1"
 	scheme "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned/scheme"
 	rest "k8s.io/client-go/rest"
 )
 
 type SamplecontrollerV1alpha1Interface interface {
 	RESTClient() rest.Interface
-	FoosGetter
+	AtsGetter
 }
 
 // SamplecontrollerV1alpha1Client is used to interact with features provided by the samplecontroller.k8s.io group.
@@ -36,8 +36,8 @@ type SamplecontrollerV1alpha1Client struct {
 	restClient rest.Interface
 }
 
-func (c *SamplecontrollerV1alpha1Client) Foos(namespace string) FooInterface {
-	return newFoos(c, namespace)
+func (c *SamplecontrollerV1alpha1Client) Ats(namespace string) AtInterface {
+	return newAts(c, namespace)
 }
 
 // NewForConfig creates a new SamplecontrollerV1alpha1Client for the given config.
@@ -85,7 +85,7 @@ func New(c rest.Interface) *SamplecontrollerV1alpha1Client {
 }
 
 func setConfigDefaults(config *rest.Config) error {
-	gv := samplecontrollerv1alpha1.SchemeGroupVersion
+	gv := cnatv1alpha1.SchemeGroupVersion
 	config.GroupVersion = &gv
 	config.APIPath = "/apis"
 	config.NegotiatedSerializer = rest.CodecFactoryForGeneratedClient(scheme.Scheme, scheme.Codecs).WithoutConversion()

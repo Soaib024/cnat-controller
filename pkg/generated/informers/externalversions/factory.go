@@ -24,8 +24,8 @@ import (
 	time "time"
 
 	versioned "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned"
+	cnat "github.com/soaib024/cnat-controller/pkg/generated/informers/externalversions/cnat"
 	internalinterfaces "github.com/soaib024/cnat-controller/pkg/generated/informers/externalversions/internalinterfaces"
-	samplecontroller "github.com/soaib024/cnat-controller/pkg/generated/informers/externalversions/samplecontroller"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -254,9 +254,9 @@ type SharedInformerFactory interface {
 	// client.
 	InformerFor(obj runtime.Object, newFunc internalinterfaces.NewInformerFunc) cache.SharedIndexInformer
 
-	Samplecontroller() samplecontroller.Interface
+	Samplecontroller() cnat.Interface
 }
 
-func (f *sharedInformerFactory) Samplecontroller() samplecontroller.Interface {
-	return samplecontroller.New(f, f.namespace, f.tweakListOptions)
+func (f *sharedInformerFactory) Samplecontroller() cnat.Interface {
+	return cnat.New(f, f.namespace, f.tweakListOptions)
 }
