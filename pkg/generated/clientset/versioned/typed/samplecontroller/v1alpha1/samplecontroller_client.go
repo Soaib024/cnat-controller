@@ -21,9 +21,9 @@ package v1alpha1
 import (
 	http "net/http"
 
+	samplecontrollerv1alpha1 "github.com/soaib024/cnat-controller/pkg/apis/samplecontroller/v1alpha1"
+	scheme "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned/scheme"
 	rest "k8s.io/client-go/rest"
-	samplecontrollerv1alpha1 "k8s.io/sample-controller/pkg/apis/samplecontroller/v1alpha1"
-	scheme "k8s.io/sample-controller/pkg/generated/clientset/versioned/scheme"
 )
 
 type SamplecontrollerV1alpha1Interface interface {

@@ -39,11 +39,11 @@ import (
 	"k8s.io/client-go/util/workqueue"
 	"k8s.io/klog/v2"
 
-	samplev1alpha1 "k8s.io/sample-controller/pkg/apis/samplecontroller/v1alpha1"
-	clientset "k8s.io/sample-controller/pkg/generated/clientset/versioned"
-	samplescheme "k8s.io/sample-controller/pkg/generated/clientset/versioned/scheme"
-	informers "k8s.io/sample-controller/pkg/generated/informers/externalversions/samplecontroller/v1alpha1"
-	listers "k8s.io/sample-controller/pkg/generated/listers/samplecontroller/v1alpha1"
+	cnatv1alpha1 "github.com/soaib024/cnat-controller/pkg/apis/samplecontroller/v1alpha1"
+	clientset "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned"
+	samplescheme "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned/scheme"
+	informers "github.com/soaib024/cnat-controller/pkg/generated/informers/externalversions/samplecontroller/v1alpha1"
+	listers "github.com/soaib024/cnat-controller/pkg/generated/listers/samplecontroller/v1alpha1"
 )
 
 const controllerAgentName = "sample-controller"
@@ -311,7 +311,7 @@ func (c *Controller) syncHandler(ctx context.Context, objectRef cache.ObjectName
 	return nil
 }
 
-func (c *Controller) updateFooStatus(ctx context.Context, foo *samplev1alpha1.Foo, deployment *appsv1.Deployment) error {
+func (c *Controller) updateFooStatus(ctx context.Context, foo *cnatv1alpha1.Foo, deployment *appsv1.Deployment) error {
 	// NEVER modify objects from the store. It's a read-only, local cache.
 	// You can use DeepCopy() to make a deep copy of original object and modify this copy
 	// Or create a copy manually for better performance
@@ -385,7 +385,7 @@ func (c *Controller) handleObject(obj interface{}) {
 // newDeployment creates a new Deployment for a Foo resource. It also sets
 // the appropriate OwnerReferences on the resource so handleObject can discover
 // the Foo resource that 'owns' it.
-func newDeployment(foo *samplev1alpha1.Foo) *appsv1.Deployment {
+func newDeployment(foo *cnatv1alpha1.Foo) *appsv1.Deployment {
 	labels := map[string]string{
 		"app":        "nginx",
 		"controller": foo.Name,
@@ -395,7 +395,7 @@ func newDeployment(foo *samplev1alpha1.Foo) *appsv1.Deployment {
 			Name:      foo.Spec.DeploymentName,
 			Namespace: foo.Namespace,
 			OwnerReferences: []metav1.OwnerReference{
-				*metav1.NewControllerRef(foo, samplev1alpha1.SchemeGroupVersion.WithKind("Foo")),
+				*metav1.NewControllerRef(foo, cnatv1alpha1.SchemeGroupVersion.WithKind("Foo")),
 			},
 		},
 		Spec: appsv1.DeploymentSpec{

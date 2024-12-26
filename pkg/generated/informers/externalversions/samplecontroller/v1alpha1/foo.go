@@ -22,14 +22,14 @@ import (
 	context "context"
 	time "time"
 
+	apissamplecontrollerv1alpha1 "github.com/soaib024/cnat-controller/pkg/apis/samplecontroller/v1alpha1"
+	versioned "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned"
+	internalinterfaces "github.com/soaib024/cnat-controller/pkg/generated/informers/externalversions/internalinterfaces"
+	samplecontrollerv1alpha1 "github.com/soaib024/cnat-controller/pkg/generated/listers/samplecontroller/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"
 	cache "k8s.io/client-go/tools/cache"
-	apissamplecontrollerv1alpha1 "k8s.io/sample-controller/pkg/apis/samplecontroller/v1alpha1"
-	versioned "k8s.io/sample-controller/pkg/generated/clientset/versioned"
-	internalinterfaces "k8s.io/sample-controller/pkg/generated/informers/externalversions/internalinterfaces"
-	samplecontrollerv1alpha1 "k8s.io/sample-controller/pkg/generated/listers/samplecontroller/v1alpha1"
 )
 
 // FooInformer provides access to a shared informer and lister for

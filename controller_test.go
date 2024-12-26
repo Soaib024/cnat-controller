@@ -35,9 +35,9 @@ import (
 	"k8s.io/client-go/tools/record"
 	"k8s.io/klog/v2/ktesting"
 
-	samplecontroller "k8s.io/sample-controller/pkg/apis/samplecontroller/v1alpha1"
-	"k8s.io/sample-controller/pkg/generated/clientset/versioned/fake"
-	informers "k8s.io/sample-controller/pkg/generated/informers/externalversions"
+	samplecontroller "github.com/soaib024/cnat-controller/pkg/apis/samplecontroller/v1alpha1"
+	"github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned/fake"
+	informers "github.com/soaib024/cnat-controller/pkg/generated/informers/externalversions"
 )
 
 var (

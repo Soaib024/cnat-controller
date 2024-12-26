@@ -19,9 +19,9 @@ limitations under the License.
 package fake
 
 import (
+	v1alpha1 "github.com/soaib024/cnat-controller/pkg/apis/samplecontroller/v1alpha1"
+	samplecontrollerv1alpha1 "github.com/soaib024/cnat-controller/pkg/generated/clientset/versioned/typed/samplecontroller/v1alpha1"
 	gentype "k8s.io/client-go/gentype"
-	v1alpha1 "k8s.io/sample-controller/pkg/apis/samplecontroller/v1alpha1"
-	samplecontrollerv1alpha1 "k8s.io/sample-controller/pkg/generated/clientset/versioned/typed/samplecontroller/v1alpha1"
 )
 
 // fakeFoos implements FooInterface
